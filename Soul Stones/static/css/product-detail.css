@@ -302,10 +302,26 @@
 
   /* Reassurance list: single column on mobile */
   .pd-reassurance {
-    grid-template-columns: 1fr;
-    gap: 10px;
+grid-template-columns: repeat(2, 1fr);    gap: 10px;
     padding-top: 18px;
+    /* border: 1px solid red !important; */
+    list-style: none !important;
+    padding: 20px 2px !important;
   }
+
+  /* .pd-reassurance li{  
+    border: 1px solid red !important;
+    font-size: 16px;
+    list-style: none !important;
+    margin: 0px !important;
+    padding: 0px !important;
+
+
+  } */
+
+
+
+
 }
 
 @media (prefers-reduced-motion: reduce) {
