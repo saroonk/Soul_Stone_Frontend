@@ -60,7 +60,7 @@
       : '<button class="add-btn" type="button" disabled>Sold Out</button>';
     li.innerHTML =
       '<article class="product-card' + (p.inStock ? "" : " out-of-stock") + '">' +
-        '<a class="product-media" href="#consult" aria-label="View ' + p.name + '">' + badges +
+        '<a class="product-media" href="product-detail.html" aria-label="View ' + p.name + '">' + badges +
           '<img src="' + IMG + p.img + '" alt="' + p.name + ', ' + p.carat.toFixed(1) + ' carat loose ' + p.stone + '" loading="lazy" />' +
         '</a>' +
         '<div class="product-body">' +
