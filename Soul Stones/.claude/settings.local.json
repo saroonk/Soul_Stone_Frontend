@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node /Users/akhildavis/.claude/skills/impeccable/scripts/load-context.mjs)",
+      "Bash(echo \"---EXIT:$?---\")",
+      "Bash(node -e \"JSON.parse\\(require\\('fs'\\).readFileSync\\('.impeccable/design.json','utf8'\\)\\); console.log\\('sidecar JSON valid'\\)\")",
+      "Bash(node --check static/js/main.js)",
+      "Bash(node -e ' *)",
+      "Skill(impeccable)"
+    ]
+  }
+}

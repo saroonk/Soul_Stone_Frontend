@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-29T00:00:00.000Z",
+  "title": "Design System: SoulStones",
+  "extensions": {
+    "colorMeta": {
+      "gold": { "role": "primary", "displayName": "Bright Gold", "canonical": "oklch(72% 0.10 85)", "tonalRamp": ["#403113", "#6B5320", "#937330", "#B68E3F", "#C9A24B", "#D9BC77", "#E8D5A8", "#F5ECD6"] },
+      "gold-deep": { "role": "primary", "displayName": "Deep Antique Gold", "canonical": "oklch(50% 0.09 80)", "tonalRamp": ["#2A2009", "#473614", "#634C1C", "#876521", "#A4823A", "#C2A567", "#DECBA0", "#F2E8D2"] },
+      "gold-soft": { "role": "secondary", "displayName": "Champagne Gold", "canonical": "oklch(87% 0.05 90)", "tonalRamp": ["#5A4E2E", "#80714A", "#A6936A", "#C4B189", "#E8D5A8", "#EEE0BF", "#F4EBD6", "#FBF6EC"] },
+      "off-white": { "role": "neutral", "displayName": "Off-White", "canonical": "oklch(96% 0.01 85)", "tonalRamp": ["#2B2620", "#4A4338", "#6E6454", "#968A78", "#C0B5A2", "#E0D7C8", "#F7F3EA", "#FFFDF8"] },
+      "surface": { "role": "neutral", "displayName": "Warm White", "canonical": "oklch(99% 0.006 85)", "tonalRamp": ["#26221E", "#433D36", "#675F54", "#928878", "#BFB6A6", "#E2DBD0", "#F4F0E9", "#FFFDF8"] },
+      "black": { "role": "neutral", "displayName": "Black", "canonical": "oklch(16% 0.012 70)", "tonalRamp": ["#16120B", "#221C12", "#352C1D", "#4E4230", "#6E5F47", "#998767", "#C6B79A", "#E8DEC9"] },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "oklch(20% 0.01 65)", "tonalRamp": ["#1A160F", "#2E281F", "#473F31", "#665B49", "#8B7E69", "#B4A892", "#D8CEBC", "#F0E9DC"] },
+      "muted-brown": { "role": "neutral", "displayName": "Muted Brown", "canonical": "oklch(57% 0.02 70)", "tonalRamp": ["#332C24", "#4D4338", "#6B5E50", "#8A7B6C", "#A89A8B", "#C6BBAE", "#E0D9CF", "#F3EFE8"] }
+    },
+    "typographyMeta": {
+      "hero-script": { "displayName": "Hero Script", "purpose": "Cormorant Garamond italic 500, clamp(1.4rem, 3vw, 2rem). Hero accent line only, once per page. One Script Rule." },
+      "display": { "displayName": "Display", "purpose": "Gloock 400, clamp(2.6rem, 5.4vw, 4.2rem), -0.025em. Hero title and largest editorial headlines." },
+      "headline": { "displayName": "Headline", "purpose": "Gloock 400, clamp(2rem, 4vw, 3rem), -0.02em. Section titles, stat figures, step numbers." },
+      "title": { "displayName": "Title", "purpose": "Inter 600, 1.25rem, 1.3 line-height. Product names, card titles, category names. NOT the display serif." },
+      "body": { "displayName": "Body", "purpose": "Inter 400, 1rem, 1.65. Running copy, capped at 65-75ch." },
+      "body-emphasis": { "displayName": "Body Emphasis", "purpose": "Inter 500, 1.125rem, 1.65. Section lede, consult body." },
+      "label": { "displayName": "Label", "purpose": "Inter 600 uppercase, 0.1em (0.06em for tighter labels). Buttons, badges, eyebrows, tags." }
+    },
+    "shadows": [
+      { "name": "resting-card", "value": "0 2px 8px rgba(26, 22, 15, 0.07)", "purpose": "Default lift for cards off the off-white background." },
+      { "name": "raised-hover", "value": "0 10px 28px rgba(26, 22, 15, 0.14)", "purpose": "Card hover state, paired with a 2px upward translate." },
+      { "name": "overlay", "value": "0 16px 48px rgba(26, 22, 15, 0.22)", "purpose": "Cart drawer and floating surfaces." }
+    ],
+    "motion": [
+      { "name": "ease-out-quart", "value": "cubic-bezier(0.25, 1, 0.5, 1)", "purpose": "Default easing for state transitions and hovers, ~180ms. No bounce." }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "640px" },
+      { "name": "tablet", "value": "960px" },
+      { "name": "desktop", "value": "1200px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Default call to action, including Add to Cart. Pill-shaped, gold fill, dark text.",
+      "html": "<button class=\"ds-btn-primary\">Add to Cart</button>",
+      "css": ".ds-btn-primary { background: #C9A24B; color: #1A160F; font-family: Inter, system-ui, sans-serif; font-weight: 600; font-size: 0.8125rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 14px 30px; border: none; border-radius: 999px; cursor: pointer; transition: background 0.18s cubic-bezier(0.25,1,0.5,1), transform 0.18s cubic-bezier(0.25,1,0.5,1); } .ds-btn-primary:hover { background: #E8D5A8; transform: translateY(-1px); } .ds-btn-primary:focus-visible { outline: 2px solid #C9A24B; outline-offset: 2px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Lower-priority actions and the WhatsApp consultation CTA on light. Gold outline, deep-gold text.",
+      "html": "<button class=\"ds-btn-secondary\">Speak with us</button>",
+      "css": ".ds-btn-secondary { background: transparent; color: #876521; font-family: Inter, system-ui, sans-serif; font-weight: 600; font-size: 0.8125rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 13px 29px; border: 1px solid #C9A24B; border-radius: 999px; cursor: pointer; transition: background 0.18s cubic-bezier(0.25,1,0.5,1), color 0.18s; } .ds-btn-secondary:hover { background: #E8D5A8; color: #1A160F; } .ds-btn-secondary:focus-visible { outline: 2px solid #C9A24B; outline-offset: 2px; }"
+    },
+    {
+      "name": "Product Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Warm white card lifting off off-white, 12px radius, soft warm shadow, with a gold-bordered NEW badge.",
+      "html": "<article class=\"ds-card\"><div class=\"ds-card-media\"><span class=\"ds-badge-new\">New</span></div><div class=\"ds-card-body\"><span class=\"ds-card-planet\">Saturn</span><h3 class=\"ds-card-title\">Ceylon Blue Sapphire</h3><p class=\"ds-card-meta\">Certified, 5.2 ct</p><p class=\"ds-card-price\">₹48,000</p></div></article>",
+      "css": ".ds-card { background: #FFFDF8; border-radius: 12px; padding: 18px; box-shadow: 0 2px 8px rgba(26,22,15,0.07); transition: box-shadow 0.18s cubic-bezier(0.25,1,0.5,1), transform 0.18s cubic-bezier(0.25,1,0.5,1); max-width: 280px; } .ds-card:hover { box-shadow: 0 10px 28px rgba(26,22,15,0.14); transform: translateY(-2px); } .ds-card-media { position: relative; aspect-ratio: 1; border-radius: 8px; background: linear-gradient(160deg,#F7F3EA,#EFE7D6); margin-bottom: 14px; } .ds-badge-new { position: absolute; top: 12px; left: 12px; background: #FFFDF8; color: #876521; border: 1px solid #C9A24B; border-radius: 6px; padding: 4px 10px; font-family: Inter, system-ui, sans-serif; font-weight: 700; font-size: 0.6875rem; letter-spacing: 0.06em; text-transform: uppercase; } .ds-card-planet { font-family: Inter, system-ui, sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: #876521; } .ds-card-title { font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: 1.22rem; color: #876521; margin: 4px 0; } .ds-card-meta { font-family: Inter, system-ui, sans-serif; font-size: 0.8125rem; color: #8A7B6C; margin: 0 0 8px; } .ds-card-price { font-family: Inter, system-ui, sans-serif; font-weight: 700; font-size: 1.0625rem; color: #1A160F; margin: 0; }"
+    },
+    {
+      "name": "Filter Chip",
+      "kind": "chip",
+      "refersTo": "button-secondary",
+      "description": "Planet filter pill. Off-white at rest, black with gold text when active.",
+      "html": "<button class=\"ds-chip\" aria-pressed=\"true\">Saturn</button>",
+      "css": ".ds-chip { background: #16120B; color: #C9A24B; border: 1px solid #16120B; border-radius: 999px; padding: 8px 17px; font-family: Inter, system-ui, sans-serif; font-size: 0.8125rem; font-weight: 500; cursor: pointer; transition: background 0.16s, color 0.16s, border-color 0.16s; } .ds-chip[aria-pressed=\"false\"] { background: #F7F3EA; color: #1A160F; border-color: rgba(26,22,15,0.12); } .ds-chip[aria-pressed=\"false\"]:hover { border-color: #C9A24B; }"
+    },
+    {
+      "name": "Statement Band Button (on black)",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "WhatsApp consultation CTA inside a black statement band. Solid gold pill with an inline WhatsApp glyph.",
+      "html": "<button class=\"ds-btn-onblack\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M12 2a10 10 0 0 0-8.6 15.05L2 22l5.1-1.34A10 10 0 1 0 12 2Z\"/></svg> Speak with us on WhatsApp</button>",
+      "css": ".ds-btn-onblack { display: inline-flex; align-items: center; gap: 8px; background: #C9A24B; color: #1A160F; font-family: Inter, system-ui, sans-serif; font-weight: 600; font-size: 0.8125rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 13px 24px; border: none; border-radius: 999px; cursor: pointer; transition: background 0.18s cubic-bezier(0.25,1,0.5,1); } .ds-btn-onblack:hover { background: #E8D5A8; } .ds-btn-onblack:focus-visible { outline: 2px solid #C9A24B; outline-offset: 2px; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "card",
+      "description": "Warm white field, hairline border, 12px radius, gold focus glow.",
+      "html": "<input class=\"ds-input\" type=\"text\" placeholder=\"Search gemstones\" />",
+      "css": ".ds-input { background: #FFFDF8; color: #1A160F; font-family: Inter, system-ui, sans-serif; font-size: 1rem; padding: 12px 16px; border: 1px solid rgba(26,22,15,0.12); border-radius: 12px; width: 260px; transition: border-color 0.18s, box-shadow 0.18s; } .ds-input::placeholder { color: #8A7B6C; } .ds-input:focus { outline: none; border-color: #C9A24B; box-shadow: 0 0 0 2px rgba(201,162,75,0.42); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Atelier in Black & Gold",
+    "overview": "SoulStones is dressed like a private jeweller, not an astrology stall. The system runs on three notes: a warm off-white that carries most of the page, deep black grounds that frame the most important moments, and gold that signals headings, actions, and accents throughout. Off-white and warm-white surfaces hold the catalog so the stones, photographed large, are the loudest thing on the page. Black grounds the statement bands and footer, where gold reads at its most precious. Gold comes in two registers: bright gold for buttons, icons, and anything on black, and a deeper antique gold for headings and labels on light, where bright gold would be too pale to read.",
+    "keyCharacteristics": [
+      "Off-white canvas, black statement grounds, gold headings and actions.",
+      "Playfair Display for editorial authority, Inter for trustworthy clarity.",
+      "Pill buttons (gold fill, dark text), 12px cards, soft warm shadows.",
+      "Wide breathing room (96px desktop sections) that signals premium.",
+      "Gold reads as a precious metal, never as decorative wallpaper."
+    ],
+    "rules": [
+      { "name": "The Two-Golds Rule", "body": "Bright Gold (#C9A24B) is for black grounds, buttons, and icons. Deep Antique Gold (#876521) is for headings and labels on light. Never set bright gold as text on off-white; it fails contrast.", "section": "colors" },
+      { "name": "The Black-as-Punctuation Rule", "body": "Black is a ground for statement moments, not a default. Most of the page is off-white. Black appears for the stats band, consultation band, and footer, where gold reads as precious.", "section": "colors" },
+      { "name": "The Warm-Neutral Rule", "body": "No pure black, no pure white, no cold grey. Text is Ink (#1A160F); the lightest surface is Warm White (#FFFDF8); the darkest is Black (#16120B). Every neutral is tinted warm.", "section": "colors" },
+      { "name": "The One Script Rule", "body": "Cormorant Garamond appears once per page, in the hero, and never in body, buttons, or UI.", "section": "typography" },
+      { "name": "The Serif-for-Soul, Sans-for-Service Rule", "body": "Playfair carries emotion and identity (headings, product names). Inter carries function (copy, controls, prices). Never set running body copy in Playfair.", "section": "typography" },
+      { "name": "The Daylight Shadow Rule", "body": "Shadows are soft, wide, and warm-tinted (rgba of Ink, low alpha). If a shadow looks dark, tight, or grey, it is wrong. Opacity stays under 0.22.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep the page mostly off-white (#F7F3EA), and use black (#16120B) only for the statement bands and footer.",
+      "Do use gold for headings, buttons, icons, and accents: Bright Gold (#C9A24B) on black and for buttons, Deep Antique Gold (#876521) for headings and labels on light.",
+      "Do make primary buttons gold fill with Ink text; secondary buttons gold outline with gold text.",
+      "Do keep buttons fully pill-shaped (999px) and cards 12px-radius Warm White with soft, warm-tinted shadows.",
+      "Do set headings and product names in Playfair Display (600/700) and all functional copy in Inter (400/500/600).",
+      "Do breathe: 96px section spacing on desktop, 56px on mobile, with large product photography carrying the page."
+    ],
+    "donts": [
+      "Don't set Bright Gold (#C9A24B) as text on off-white; it fails contrast. Use Deep Antique Gold (#876521) for gold text on light.",
+      "Don't use gaudy gold-and-purple mystical theming, glows, sparkles, or zodiac iconography as decoration. No purple anywhere.",
+      "Don't use pure #000 or pure #fff or cold grey. Neutrals stay warm.",
+      "Don't ship conversion-pressure patterns: countdown timers, only-2-left, exclamation-heavy urgency copy, or auto-opening pop-ups.",
+      "Don't set the hero script (Cormorant Garamond) anywhere but the hero, and never more than once per page.",
+      "Don't set running body copy in Playfair Display; that is Inter's job.",
+      "Don't use hard, dark, tight drop-shadows. If a card looks like a 2014 app, the shadow is too dark and the blur is too small.",
+      "Don't build IndiaMART-style dense grids of identical thumbnails; present categories as curated collections.",
+      "Don't add gradient text, side-stripe borders, or decorative glassmorphism."
+    ]
+  }
+}
