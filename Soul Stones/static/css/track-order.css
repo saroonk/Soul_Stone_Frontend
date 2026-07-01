@@ -1,0 +1,303 @@
+/* ============================================================
+   SoulStones — Track Order page
+   Reuses design tokens, .btn, .shell, .section, .sr-only from styles.css.
+   Reuses .mo-* accordion styles from my-orders.css (loaded before this file).
+   Only track-order-specific layout lives here.
+   ============================================================ */
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.to-hero {
+  position: relative;
+  background-image: url('../images/hero_section_banner.webp');
+  background-size: cover;
+  background-position: center;
+  min-height: clamp(320px, 42vw, 500px);
+}
+
+/* Dark overlay — sits above the background-image */
+.to-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(22, 18, 11, 0.72);
+}
+
+/* Lifts hero content above the overlay */
+.to-hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 640px;
+  margin-inline: auto;
+  padding-top: 3rem;
+}
+
+/* Script accent — One Script Rule: Cormorant Garamond italic, once per page */
+.to-hero-script {
+  font-family: var(--font-script);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.1rem, 2.4vw, 1.65rem);
+  color: var(--gold); /* Two-Golds Rule: --gold on dark ground */
+  line-height: 1.2;
+  letter-spacing: normal;
+  margin: 0 0 12px;
+}
+
+.to-hero-title {
+  font-family: var(--font-display);
+  font-weight: 400; /* Gloock 400 only */
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  letter-spacing: -0.025em;
+  line-height: 1.06;
+  color: #fff;
+  margin: 0 0 16px;
+}
+
+.to-hero-lede {
+  font-family: var(--font-body);
+  font-size: clamp(0.9375rem, 1.4vw, 1.0625rem);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.72);
+  max-width: 48ch;
+  margin: 0 auto;
+}
+
+/* ============================================================
+   LOOKUP SECTION
+   Restore top padding collapsed by .section + .section rule in styles.css.
+   ============================================================ */
+.to-lookup-section {
+  background: var(--bg);
+  padding-top: 4rem !important;
+}
+
+/* ============================================================
+   LOOKUP WRAP — no card, content floats on page background
+   ============================================================ */
+.to-lookup-wrap {
+  text-align: center;
+  max-width: 900px;
+  margin-inline: auto;
+}
+
+.to-lookup-heading {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  letter-spacing: -0.025em;
+  line-height: 1.06;
+  color: var(--gold-deep); /* Two-Golds Rule: --gold-deep on light */
+  margin: 0 0 14px;
+}
+
+.to-lookup-desc {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--muted);
+  max-width: 500px;
+  margin: 0 auto 40px;
+}
+
+/* ============================================================
+   SEARCH PILL — one premium unified component
+   ============================================================ */
+.to-search-pill {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 860px;
+  margin-inline: auto;
+  height: 74px;
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  box-shadow:
+    0 2px 20px rgba(22, 18, 11, 0.07),
+    0 1px 4px  rgba(22, 18, 11, 0.03);
+  padding: 8px 8px 8px 28px;
+  transition: box-shadow 0.2s var(--ease);
+}
+
+.to-search-pill:focus-within {
+  box-shadow:
+    0 4px 24px rgba(22, 18, 11, 0.1),
+    0 0 0 3px rgba(135, 101, 33, 0.1);
+}
+
+/* Error state on the whole pill when input is invalid */
+.to-search-pill:has(.to-lookup-input[aria-invalid="true"]) {
+  border-color: #8B2E2E;
+  box-shadow: 0 0 0 3px rgba(139, 46, 46, 0.1);
+}
+
+.to-search-icon {
+  flex-shrink: 0;
+  color: var(--muted);
+}
+
+/* Input is borderless and transparent — the pill IS the container */
+.to-lookup-input {
+  flex: 1;
+  min-width: 0;
+  align-self: stretch;
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--ink);
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.to-lookup-input::placeholder {
+  color: var(--muted);
+  opacity: 0.8;
+}
+
+/* ---- Gold pill button inside the search pill ---- */
+.to-search-btn {
+  flex-shrink: 0;
+  height: 58px;
+  padding-inline: 32px;
+  border-radius: 999px !important;
+  white-space: nowrap;
+  display: inline-flex !important;
+  align-items: center;
+  font-size: 0.8125rem !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: box-shadow 0.18s var(--ease);
+}
+
+.to-search-btn:hover {
+  box-shadow: 0 4px 18px rgba(135, 101, 33, 0.3);
+}
+
+/* ---- Validation message ---- */
+.to-form-msg {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: #8B2E2E;
+  margin-top: 12px;
+  min-height: 1.2em;
+  line-height: 1.4;
+  text-align: center;
+}
+
+/* ============================================================
+   RESULTS + EMPTY STATE
+   Space between the lookup card and what appears below it.
+   ============================================================ */
+#toResults,
+#toEmpty {
+  margin-top: clamp(28px, 4vw, 40px);
+}
+
+/* ---- Results heading ---- */
+.to-results-heading {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 0 0 20px;
+}
+
+/* ============================================================
+   EMPTY STATE (no orders found)
+   Uses .to-* prefix to avoid conflict with .mo-empty in my-orders.css.
+   ============================================================ */
+.to-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: clamp(48px, 6vw, 80px) 24px;
+  max-width: 440px;
+  margin-inline: auto;
+}
+
+.to-empty-icon {
+  color: var(--muted);
+  opacity: 0.5;
+  margin-bottom: 28px;
+}
+
+.to-empty-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 0 0 14px;
+}
+
+.to-empty-desc {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--muted);
+  max-width: 38ch;
+  margin: 0 0 28px;
+}
+
+/* ============================================================
+   RESPONSIVE — Mobile (≤ 540px)
+   ============================================================ */
+/* Pill shrinks gracefully on tablet — max-width handles it automatically */
+
+/* On small mobile, stack the pill contents vertically */
+@media (max-width: 600px) {
+  .to-search-pill {
+    height: auto;
+    flex-direction: column;
+    border-radius: 20px;
+    padding: 14px;
+    gap: 10px;
+    align-items: stretch;
+  }
+
+  .to-search-icon {
+    display: none;
+  }
+
+  /* Restore a visible border on the input when detached from pill row */
+  .to-lookup-input {
+    height: 50px;
+    padding: 0 16px;
+    border: 1.5px solid var(--hairline);
+    border-radius: 10px;
+    background: var(--bg);
+    align-self: auto;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .to-lookup-input:focus {
+    border-color: var(--gold-deep);
+    outline: none;
+  }
+
+  .to-search-btn {
+    height: 50px;
+    width: 100%;
+    border-radius: 10px !important;
+    justify-content: center;
+    font-size: 0.8125rem !important;
+  }
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .to-search-pill   { transition: none; }
+  .to-search-btn    { transition: none; }
+  .to-search-btn:hover { box-shadow: none; }
+}
