@@ -6,14 +6,26 @@
    ============================================================ */
 
 /* ============================================================
-   HERO
+   FADE-UP ANIMATION
+   ============================================================ */
+@keyframes toFadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ============================================================
+   HERO — full bleed image, dark overlay, vertically centered
    ============================================================ */
 .to-hero {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background-image: url('../images/hero_section_banner.webp');
   background-size: cover;
   background-position: center;
-  min-height: clamp(320px, 42vw, 500px);
+  min-height: clamp(480px, 58vw, 680px);
+  padding-block: clamp(48px, 6vw, 72px) !important; /* overrides styles.css .section */
 }
 
 /* Dark overlay — sits above the background-image */
@@ -29,9 +41,8 @@
   position: relative;
   z-index: 1;
   text-align: center;
-  max-width: 640px;
+  max-width: 780px;
   margin-inline: auto;
-  padding-top: 3rem;
 }
 
 /* Script accent — One Script Rule: Cormorant Garamond italic, once per page */
@@ -66,80 +77,56 @@
 }
 
 /* ============================================================
-   LOOKUP SECTION
-   Restore top padding collapsed by .section + .section rule in styles.css.
+   HERO SEARCH FORM
    ============================================================ */
-.to-lookup-section {
-  background: var(--bg);
-  padding-top: 4rem !important;
+.to-hero-form {
+  margin-top: 36px;
 }
 
 /* ============================================================
-   LOOKUP WRAP — no card, content floats on page background
+   GLASSMORPHISM SEARCH PILL — frosted glass on dark hero
+   Two-Golds Rule: gold button on dark → --gold (btn-primary)
    ============================================================ */
-.to-lookup-wrap {
-  text-align: center;
-  max-width: 900px;
-  margin-inline: auto;
-}
-
-.to-lookup-heading {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
-  letter-spacing: -0.025em;
-  line-height: 1.06;
-  color: var(--gold-deep); /* Two-Golds Rule: --gold-deep on light */
-  margin: 0 0 14px;
-}
-
-.to-lookup-desc {
-  font-family: var(--font-body);
-  font-size: 1rem;
-  line-height: 1.65;
-  color: var(--muted);
-  max-width: 500px;
-  margin: 0 auto 40px;
-}
-
-/* ============================================================
-   SEARCH PILL — one premium unified component
-   ============================================================ */
-.to-search-pill {
+.to-hero-pill {
   display: flex;
   align-items: center;
   gap: 12px;
-  max-width: 860px;
+  max-width: 720px;
   margin-inline: auto;
-  height: 74px;
-  background: var(--surface);
-  border: 1px solid var(--hairline);
+  height: 62px;
+  background: rgba(255, 255, 255, 0.12);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 999px;
   box-shadow:
-    0 2px 20px rgba(22, 18, 11, 0.07),
-    0 1px 4px  rgba(22, 18, 11, 0.03);
-  padding: 8px 8px 8px 28px;
-  transition: box-shadow 0.2s var(--ease);
+    0 8px 32px rgba(0, 0, 0, 0.24),
+    0 2px 8px  rgba(0, 0, 0, 0.12);
+  padding: 6px 6px 6px 24px;
+  animation: toFadeUp 0.5s var(--ease) 0.1s both;
+  transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
 }
 
-.to-search-pill:focus-within {
+.to-hero-pill:focus-within {
+  border-color: rgba(255, 255, 255, 0.4);
   box-shadow:
-    0 4px 24px rgba(22, 18, 11, 0.1),
-    0 0 0 3px rgba(135, 101, 33, 0.1);
+    0 8px 32px rgba(0, 0, 0, 0.24),
+    0 0 0 3px rgba(201, 162, 75, 0.3);
 }
 
-/* Error state on the whole pill when input is invalid */
-.to-search-pill:has(.to-lookup-input[aria-invalid="true"]) {
-  border-color: #8B2E2E;
-  box-shadow: 0 0 0 3px rgba(139, 46, 46, 0.1);
+/* Error state — pill border turns warm red when input is invalid */
+.to-hero-pill:has(.to-lookup-input[aria-invalid="true"]) {
+  border-color: rgba(255, 120, 100, 0.7);
+  box-shadow: 0 0 0 3px rgba(255, 100, 80, 0.2);
 }
 
+/* ---- Email icon ---- */
 .to-search-icon {
   flex-shrink: 0;
-  color: var(--muted);
+  color: rgba(255, 255, 255, 0.65);
 }
 
-/* Input is borderless and transparent — the pill IS the container */
+/* ---- Input — transparent on dark, white text ---- */
 .to-lookup-input {
   flex: 1;
   min-width: 0;
@@ -149,22 +136,22 @@
   background: transparent;
   font-family: var(--font-body);
   font-size: 1rem;
-  color: var(--ink);
+  color: #fff;
   outline: none;
   -webkit-appearance: none;
   appearance: none;
 }
 
 .to-lookup-input::placeholder {
-  color: var(--muted);
-  opacity: 0.8;
+  color: rgba(255, 255, 255, 0.5);
+  opacity: 1;
 }
 
-/* ---- Gold pill button inside the search pill ---- */
+/* ---- Gold button — Two-Golds Rule: --gold via .btn-primary on dark ---- */
 .to-search-btn {
   flex-shrink: 0;
-  height: 58px;
-  padding-inline: 32px;
+  height: 50px;
+  padding-inline: 28px;
   border-radius: 999px !important;
   white-space: nowrap;
   display: inline-flex !important;
@@ -172,31 +159,35 @@
   font-size: 0.8125rem !important;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  transition: box-shadow 0.18s var(--ease);
+  transition: box-shadow 0.18s var(--ease), transform 0.18s var(--ease);
 }
 
 .to-search-btn:hover {
-  box-shadow: 0 4px 18px rgba(135, 101, 33, 0.3);
+  box-shadow: 0 4px 20px rgba(201, 162, 75, 0.45);
+  transform: translateY(-1px);
 }
 
-/* ---- Validation message ---- */
+/* ---- Validation message — light on dark hero ---- */
 .to-form-msg {
   font-family: var(--font-body);
   font-size: 0.8125rem;
-  color: #8B2E2E;
-  margin-top: 12px;
+  color: rgba(255, 160, 150, 0.95);
+  margin-top: 14px;
   min-height: 1.2em;
   line-height: 1.4;
   text-align: center;
 }
 
 /* ============================================================
-   RESULTS + EMPTY STATE
-   Space between the lookup card and what appears below it.
+   RESULTS OUTER WRAPPER — on var(--bg), revealed by JS
    ============================================================ */
-#toResults,
-#toEmpty {
-  margin-top: clamp(28px, 4vw, 40px);
+.to-results-outer {
+  background: var(--bg);
+  padding-block: clamp(40px, 5vw, 64px);
+}
+
+.to-results-outer:not([hidden]) {
+  animation: toFadeUp 0.4s var(--ease) both;
 }
 
 /* ---- Results heading ---- */
@@ -207,6 +198,17 @@
   letter-spacing: -0.02em;
   color: var(--ink);
   margin: 0 0 20px;
+}
+
+/* ============================================================
+   EMPTY STATE OUTER WRAPPER — revealed by JS
+   ============================================================ */
+.to-empty-outer {
+  background: var(--bg);
+}
+
+.to-empty-outer:not([hidden]) {
+  animation: toFadeUp 0.4s var(--ease) both;
 }
 
 /* ============================================================
@@ -248,48 +250,25 @@
 }
 
 /* ============================================================
-   RESPONSIVE — Mobile (≤ 540px)
+   RESPONSIVE — Mobile (≤ 600px)
+   Button stays INSIDE the pill — no stacking.
    ============================================================ */
-/* Pill shrinks gracefully on tablet — max-width handles it automatically */
-
-/* On small mobile, stack the pill contents vertically */
 @media (max-width: 600px) {
-  .to-search-pill {
-    height: auto;
-    flex-direction: column;
-    border-radius: 20px;
-    padding: 14px;
-    gap: 10px;
-    align-items: stretch;
-  }
-
-  .to-search-icon {
-    display: none;
-  }
-
-  /* Restore a visible border on the input when detached from pill row */
-  .to-lookup-input {
-    height: 50px;
-    padding: 0 16px;
-    border: 1.5px solid var(--hairline);
-    border-radius: 10px;
-    background: var(--bg);
-    align-self: auto;
-    -webkit-appearance: none;
-    appearance: none;
-  }
-
-  .to-lookup-input:focus {
-    border-color: var(--gold-deep);
-    outline: none;
+  .to-hero-pill {
+    height: 56px;
+    max-width: 95%;
+    padding: 5px 5px 5px 18px;
+    gap: 8px;
   }
 
   .to-search-btn {
-    height: 50px;
-    width: 100%;
-    border-radius: 10px !important;
-    justify-content: center;
-    font-size: 0.8125rem !important;
+    height: 46px;
+    padding-inline: 16px;
+    font-size: 0.75rem !important;
+  }
+
+  .to-hero-form {
+    margin-top: 28px;
   }
 }
 
@@ -297,7 +276,9 @@
    REDUCED MOTION
    ============================================================ */
 @media (prefers-reduced-motion: reduce) {
-  .to-search-pill   { transition: none; }
-  .to-search-btn    { transition: none; }
-  .to-search-btn:hover { box-shadow: none; }
+  .to-hero-pill                        { animation: none; transition: none; }
+  .to-search-btn                       { transition: none; }
+  .to-search-btn:hover                 { box-shadow: none; transform: none; }
+  .to-results-outer:not([hidden]),
+  .to-empty-outer:not([hidden])        { animation: none; }
 }
