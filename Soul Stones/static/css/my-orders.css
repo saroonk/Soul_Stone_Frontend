@@ -114,10 +114,10 @@
   box-shadow: var(--sh-hover);
 }
 
-/* ---- Summary / header ---- */
+/* ---- Summary / header ----
 .mo-order-item {
   /* reset <details> default styles */
-}
+/* }  */
 
 .mo-order-header {
   display: flex;
