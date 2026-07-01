@@ -179,6 +179,21 @@
 }
 
 /* ============================================================
+   BOOTSTRAP RESET — neutralise ul/li defaults that shift the product list
+   Bootstrap's `ul { padding-left: 2rem }` (tag specificity 0,0,1) loses
+   to class selectors (0,1,0), so these overrides win without !important.
+   ============================================================ */
+.mo-product-list {
+  padding-left: 0;
+  list-style: none;
+  margin-bottom: 0;
+}
+
+.mo-product-item {
+  list-style-type: none;
+}
+
+/* ============================================================
    RESULTS OUTER WRAPPER — on var(--bg), revealed by JS
    ============================================================ */
 .to-results-outer {
