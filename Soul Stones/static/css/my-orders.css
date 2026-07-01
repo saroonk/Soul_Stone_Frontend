@@ -114,10 +114,10 @@
   box-shadow: var(--sh-hover);
 }
 
-/* ---- Summary / header ----
+/* ---- Summary / header ---- */
 .mo-order-item {
   /* reset <details> default styles */
-/* }  */
+} 
 
 .mo-order-header {
   display: flex;
@@ -248,6 +248,8 @@
 
 /* ============================================================
    PRODUCT LIST
+   Bootstrap's `ul { padding-left: 2rem }` (tag specificity 0,0,1) is
+   overridden here by the class selector (0,1,0) — no !important needed.
    ============================================================ */
 .mo-product-list {
   display: flex;
@@ -256,6 +258,13 @@
   border-radius: var(--r-card);
   overflow: hidden;
   background: var(--bg);
+  padding-left: 0;
+  list-style: none;
+  margin-bottom: 0;
+}
+
+.mo-product-item {
+  list-style-type: none;
 }
 
 .mo-product-item {
